@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import edu.cnm.deepdive.notekeeper.databinding.FragmentNoteBinding;
 
 public class NoteFragment extends Fragment {
@@ -16,6 +17,9 @@ public class NoteFragment extends Fragment {
   public View onCreateView(
       LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentNoteBinding.inflate(inflater, container, false);
+    binding.addNote.setOnClickListener((v) -> Navigation
+        .findNavController(binding.getRoot())
+        .navigate(NoteFragmentDirections.openNote()));
     return binding.getRoot();
   }
 
